@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Introduction to Pulsar Timing Arrays}{3}{0}{1}
+\beamer@sectionintoc {2}{Sensitivity Curves}{3}{0}{2}
+\beamer@sectionintoc {3}{Derivation of Quick Sensitivity Curves}{5}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{12}{0}{4}
