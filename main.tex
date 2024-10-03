@@ -36,10 +36,33 @@
 
 % SECTION 1: INTRODUCTION
 \section{Introduction to Pulsar Timing Arrays}
+\begin{frame}{Pulsars}
+    \begin{itemize}
+        \item Pulsars are rapidly rotating neutron stars that emit beams of radiation.
+        \item "millisecond" pulsars are highly stable
+        \item Can track changes in relative motion between Earth and pulsars
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{figs/pulsar_timing.png}
+        \caption{Relative motion of the earth and pulsar can be seen in the arrival times of pulses.}
+        \label{fig:pulsar}
+    \end{figure}
+\end{frame}
 
-
-
-
+\begin{frame}{Pulsars Timing Arrays (PTAs)}
+\begin{itemize}
+        \item an array of millisecond pulsars
+        \item track relative changes in Earth-pulsar distance over decades
+        \item correlations between pulsars across the sky reveal gravitational waves
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figs/champion_pta.png}
+        \caption{Artist rendering of a PTA}
+        \label{fig:pulsar}
+    \end{figure}
+\end{frame}
 
 
 \section{Sensitivity Curves}
@@ -48,6 +71,8 @@
     \begin{itemize}
         \item Encode the noise properties of the detector.
         \item Can be used to assess to the "detectability" of something.
+        \item Useful figures of merit for detector characterization.
+        \item tools exist to calculate the sensitivity curve for gravitational wave detectors ...
     \end{itemize}
 \end{frame}
 
@@ -79,6 +104,7 @@
     \begin{itemize}
         \item \textbf{derive a quick sensitivity curve for PTAs}
         \item implement quick sensitivity curve into \textit{GW Plotter}
+        \item share with the rest of the GW astronomy community
     \end{itemize}
 \end{frame}
 
@@ -112,23 +138,42 @@
 \begin{frame}{Simplified Sensitivity Equation}
     Assuming uniform pulsar distribution across the sky,
     \[
-    \chi_{IJ} \approx 1/48
+    \chi_{IJ}^2 \approx 1/48
+    \]
+    \[
+    S_{\text{eff}}(f) = \left( \sum_I \sum_{J > I} \frac{T_{IJ}}{T_{\text{obs}}} \frac{1}{48 \space S_I(f) S_J(f)} \right)^{-1/2}
+    \]
+    \pause
+    Assuming that all pulsars have been observed for the total timespan, $T_{\rm obs}=T_{IJ}$,
+    \[
+    S_{\text{eff}}(f) = \left( \sum_I \sum_{J > I}\frac{1}{48 \space S_I(f) S_J(f)}\right)^{-1/2}
+    \]
+\end{frame}
+
+\begin{frame}{Simplified Sensitivity Equation}
+    Assuming that all pulsars have the same noise properties, $S_I\approx S_J$.
+    So the sum can be simplified\ldots
+    \[
+    \sum_I \sum_{J > I} \frac{1}{48 \space S_I(f) S_J(f)} \approx \frac{N_{\rm psr}(N_{\rm psr}-1)}{2} \frac{1}{48 \space S_I(f)^2}
+    \]
+    And our expression for sensitivity becomes\ldots
+    \[
+    S_{\text{eff}}(f) = \left( \frac{N_{\rm psr}(N_{\rm psr}-1)}{2}\frac{1}{48 \space S_I(f)^2} \right)^{-1/2}
     \]
 
-    and identical noise properties:
-    \[
-    S_{\text{eff}}(f) = \left(\frac{N_{\rm psr}\left(N_{\rm psr}-1\right)}{2 \times 48 \times S_I(f)^2} \right)^{-1/2}
-    \]
+    So we only need to calculate the sensitivity for one pulsar!
+
 \end{frame}
 
 
 \begin{frame}{Final Sensitivity Equation}
-    single pulsar sensitivity is given by:
+    Single pulsar sensitivity is given by:
     \[
         S_{I}(f) = \frac{1}{\mathcal{N}_I^{-1}(f)\mathcal{R}(f)} = \frac{12\pi^2f^2}{\mathcal{N}_I^{-1}(f)}
         \]
         where $\mathcal{N}_I^{-1}(f)$ is the noise-weighted inverse transmission function for pulsar $I$.
     \pause
+    \newline
     From the above equation, it follows that:
     \[
     S_{\text{eff}}(f) = \left(\frac{96}{N_{\rm psr}(N_{\rm psr}-1)}\right)^{1/2} \frac{12\pi^2f^2}{\mathcal{N}^{-1}_I(f)}
@@ -139,7 +184,7 @@
     \[
     \mathcal{N}^{-1}(f) \equiv \frac{1}{2 T_{\text{span}}} \sum_{I,J} \left[ G \left( G^T C G \right)^{-1} G^T \right]_{I,J} e^{i 2 \pi f \left(t_i - t_j\right)},
     \]
-    Most expensive part of the computation. C is an $N_{\rm toa} \times N_{\rm toa}$ covariance matrix.
+    Most expensive part of the computation because C is an $N_{\rm toa} \times N_{\rm toa}$ covariance matrix.
     (memory intensive)
     \pause
     \newline
@@ -148,10 +193,25 @@
     \[
     \mathcal{N}^{-1}_I(f) \approx \frac{\mathcal{T}_I(f)}{P_{\rm N}(f)}
     \]
-    where $\mathcal{T}_I(f) \approx \left(1 + \frac{1}{T_{\rm obs}f}\right)^{-6}$ is an approximation to the transmission function
+    where $\mathcal{T}_I(f) \approx \left(1 + \frac{1}{T_{\rm obs}f}\right)^{-6}$ is an approximation to the transmission function and $P_{\rm N}(f)$ is the power in the noise.
 \end{frame}
 
-\begin{frame}{Noise Model}
+\begin{frame}{Transmission Function}
+    Here we use a first order polynomial approximation to the transmission function:
+    \[
+    \mathcal{T}_I(f) \approx \left(1 + \frac{1}{T_{\rm obs}f}\right)^{-6}
+    \]
+    The transmission function describes how much power we lose at each frequency due to our fit to a timing model.
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{figs/transmission_function.png}
+        \caption{Example of an unapproximated transmission function.}
+        \label{fig:transmission_function}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Noise Power}
     The power in the noise is given by:
     \[
     P_{N} = P_{\rm WN} + P_{\rm RN} = 2\Delta t\sigma^2 + A_{\rm RN}f^{-\gamma_{\rm RN}}
@@ -165,22 +225,38 @@
     \end{itemize}
 \end{frame}
 
-\section{Conclusion}
-\begin{frame}{Conclusion}
-    Accurate PTA sensitivity is expensive to compute.
+\begin{frame}{Final Expression}
 
-    But with a few oversimplifications, we can get a quick estimate to characterize our detector.
+    Putting it all together, we have the final expression for the simplified sensitivity curve...
+    \[
+    S_{\text{eff}}(f) = \left(\frac{96}{N_{\rm psr}(N_{\rm psr}-1)}\right)^{1/2} \frac{12\pi^2f^2}{\mathcal{T}_I(f)P_{\rm N}(f)}
+    \]
+    \pause
+    \newline
+    ... and now we just have to learn JavaScript ...
+
 \end{frame}
 
-\begin{frame}{Sensitivity Curves}
+\section{Conclusions}
+
+\begin{frame}{GW Plotter Update}
     \begin{figure}
         \centering
         \includegraphics[width=\linewidth]{figs/my_gwplotter.png}
-        \caption{My update to GW Plotter !!
+        \caption{My more realistic sensitivity curve approximation in GW Plotter !!
         \centering \url{https://jeremy-baier/github.io/gwplotter}
         }
-        \label{fig:sensitivity_curve}
+        \label{fig:gwplotter_update}
     \end{figure}
+\end{frame}
+
+\begin{frame}{Conclusions}
+    \begin{itemize}
+        \item Sensitivity curves are a way to characterize the sensitivity of a detector to a given signal.
+        \item PTA sensitivity curves are not pizza slices !!
+        \item With some approximations, I derive approximate but quick sensitivity curve for PTAs.
+        \item I implement quick background sensitivity curves into \textit{GW Plotter} to better represent the PTA community.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{References}

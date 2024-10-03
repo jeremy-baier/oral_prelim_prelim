@@ -5,43 +5,53 @@
 \headcommand {\beamer@sectionpages {1}{2}}
 \headcommand {\beamer@subsectionpages {1}{2}}
 \headcommand {\sectionentry {1}{Introduction to Pulsar Timing Arrays}{3}{Introduction to Pulsar Timing Arrays}{0}}
-\headcommand {\beamer@sectionpages {3}{2}}
-\headcommand {\beamer@subsectionpages {3}{2}}
-\headcommand {\sectionentry {2}{Sensitivity Curves}{3}{Sensitivity Curves}{0}}
-\headcommand {\slideentry {2}{0}{1}{3/3}{}{0}}
+\headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {2}{0}{2}{4/4}{}{0}}
+\headcommand {\slideentry {1}{0}{2}{4/4}{}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\slideentry {2}{0}{3}{5/5}{}{0}}
+\headcommand {\beamer@sectionpages {3}{4}}
+\headcommand {\beamer@subsectionpages {3}{4}}
+\headcommand {\sectionentry {2}{Sensitivity Curves}{5}{Sensitivity Curves}{0}}
+\headcommand {\slideentry {2}{0}{1}{5/5}{}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\slideentry {2}{0}{4}{6/6}{}{0}}
+\headcommand {\slideentry {2}{0}{2}{6/6}{}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@sectionpages {3}{6}}
-\headcommand {\beamer@subsectionpages {3}{6}}
-\headcommand {\sectionentry {3}{Derivation of Quick Sensitivity Curves}{7}{Derivation of Quick Sensitivity Curves}{0}}
-\headcommand {\slideentry {3}{0}{1}{7/7}{}{0}}
+\headcommand {\slideentry {2}{0}{3}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {3}{0}{2}{8/8}{}{0}}
+\headcommand {\slideentry {2}{0}{4}{8/8}{}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {3}{0}{3}{9/9}{}{0}}
+\headcommand {\beamer@sectionpages {5}{8}}
+\headcommand {\beamer@subsectionpages {5}{8}}
+\headcommand {\sectionentry {3}{Derivation of Quick Sensitivity Curves}{9}{Derivation of Quick Sensitivity Curves}{0}}
+\headcommand {\slideentry {3}{0}{1}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {3}{0}{4}{10/11}{}{0}}
-\headcommand {\beamer@framepages {10}{11}}
-\headcommand {\slideentry {3}{0}{5}{12/13}{}{0}}
-\headcommand {\beamer@framepages {12}{13}}
-\headcommand {\slideentry {3}{0}{6}{14/14}{}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@sectionpages {7}{14}}
-\headcommand {\beamer@subsectionpages {7}{14}}
-\headcommand {\sectionentry {4}{Conclusion}{15}{Conclusion}{0}}
-\headcommand {\slideentry {4}{0}{1}{15/15}{}{0}}
-\headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {4}{0}{2}{16/16}{}{0}}
-\headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {4}{0}{3}{17/17}{}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\beamer@partpages {1}{17}}
-\headcommand {\beamer@subsectionpages {15}{17}}
-\headcommand {\beamer@sectionpages {15}{17}}
-\headcommand {\beamer@documentpages {17}}
-\headcommand {\gdef \inserttotalframenumber {15}}
+\headcommand {\slideentry {3}{0}{2}{10/10}{}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\slideentry {3}{0}{3}{11/12}{}{0}}
+\headcommand {\beamer@framepages {11}{12}}
+\headcommand {\slideentry {3}{0}{4}{13/13}{}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\slideentry {3}{0}{5}{14/15}{}{0}}
+\headcommand {\beamer@framepages {14}{15}}
+\headcommand {\slideentry {3}{0}{6}{16/17}{}{0}}
+\headcommand {\beamer@framepages {16}{17}}
+\headcommand {\slideentry {3}{0}{7}{18/18}{}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\slideentry {3}{0}{8}{19/19}{}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {3}{0}{9}{20/21}{}{0}}
+\headcommand {\beamer@framepages {20}{21}}
+\headcommand {\beamer@sectionpages {9}{21}}
+\headcommand {\beamer@subsectionpages {9}{21}}
+\headcommand {\sectionentry {4}{Conclusions}{22}{Conclusions}{0}}
+\headcommand {\slideentry {4}{0}{1}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {4}{0}{2}{23/23}{}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {4}{0}{3}{24/24}{}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\beamer@partpages {1}{24}}
+\headcommand {\beamer@subsectionpages {22}{24}}
+\headcommand {\beamer@sectionpages {22}{24}}
+\headcommand {\beamer@documentpages {24}}
+\headcommand {\gdef \inserttotalframenumber {20}}
