@@ -34,8 +34,9 @@
     \tableofcontents
 \end{frame}
 
-% Slide 1: Introduction
+% SECTION 1: INTRODUCTION
 \section{Introduction to Pulsar Timing Arrays}
+
 
 
 
@@ -53,10 +54,32 @@
 \begin{frame}{Sensitivity Curves}
     \begin{figure}
         \centering
-        \includegraphics[width=\linewidth]{figs/my_gwplotter.png}
-        \caption{Sensitivity Curve Example}
+        \includegraphics[width=\linewidth]{figs/gwplotter.png}
+        \caption{Community resource for approximate GW sensitivity curves
+        \centering \url{https://gwplotter.com/}
+        }
         \label{fig:sensitivity_curve}
     \end{figure}
+\end{frame}
+
+\begin{frame}{Sensitivity Curves}
+    But PTA sensitivity curves are not pizza slices !!
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{figs/example_sensitivity_curve.png}
+        \caption{Example "realistic" sensitivity curve for a PTA
+        \centering \url{https://hasasia.readthedocs.io}
+        }
+        \label{fig:pta_sensitivity_curve}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Sensitivity Curves}
+    Project goals:
+    \begin{itemize}
+        \item \textbf{derive a quick sensitivity curve for PTAs}
+        \item implement quick sensitivity curve into \textit{GW Plotter}
+    \end{itemize}
 \end{frame}
 
 \section{Derivation of Quick Sensitivity Curves}
@@ -76,7 +99,7 @@
 \end{frame}
 
 \begin{frame}{Derivation of Quick Sensitivity Curves}
-    Simplifying assumptions:
+    Simplifying assumptions from GW Plotter:
     \begin{itemize}
         \item Uniform distribution of pulsars across the sky
         \item Identical noise properties for all pulsars
@@ -100,24 +123,32 @@
 
 
 \begin{frame}{Final Sensitivity Equation}
-    From Equation 2, it follows that:
+    single pulsar sensitivity is given by:
+    \[
+        S_{I}(f) = \frac{1}{\mathcal{N}_I^{-1}(f)\mathcal{R}(f)} = \frac{12\pi^2f^2}{\mathcal{N}_I^{-1}(f)}
+        \]
+        where $\mathcal{N}_I^{-1}(f)$ is the noise-weighted inverse transmission function for pulsar $I$.
+    \pause
+    From the above equation, it follows that:
     \[
     S_{\text{eff}}(f) = \left(\frac{96}{N_{\rm psr}(N_{\rm psr}-1)}\right)^{1/2} \frac{12\pi^2f^2}{\mathcal{N}^{-1}_I(f)}
     \]
 \end{frame}
 
-\begin{frame}{Derivation of Quick Sensitivity Curves}
+\begin{frame}{Invserse Noise-Weighted Transmission}
     \[
-    S_{I}(f) = \frac{1}{\mathcal{N}_I^{-1}(f)\mathcal{R}(f)} = \frac{12\pi^2f^2}{\mathcal{N}_I^{-1}(f)}
+    \mathcal{N}^{-1}(f) \equiv \frac{1}{2 T_{\text{span}}} \sum_{I,J} \left[ G \left( G^T C G \right)^{-1} G^T \right]_{I,J} e^{i 2 \pi f \left(t_i - t_j\right)},
     \]
-    where $\mathcal{N}_I^{-1}(f)$ is the noise-weighted inverse transmission function for pulsar $I$.
-\end{frame}
+    Most expensive part of the computation. C is an $N_{\rm toa} \times N_{\rm toa}$ covariance matrix.
+    (memory intensive)
+    \pause
+    \newline
 
-\begin{frame}{Noise-Weighted Inverse Transmission}
+    So we approximate...
     \[
     \mathcal{N}^{-1}_I(f) \approx \frac{\mathcal{T}_I(f)}{P_{\rm N}(f)}
     \]
-    where $\mathcal{T}_I(f) \approx \left(1 + \frac{1}{T_{\rm obs}f}\right)^{-6}$
+    where $\mathcal{T}_I(f) \approx \left(1 + \frac{1}{T_{\rm obs}f}\right)^{-6}$ is an approximation to the transmission function
 \end{frame}
 
 \begin{frame}{Noise Model}
@@ -125,7 +156,13 @@
     \[
     P_{N} = P_{\rm WN} + P_{\rm RN} = 2\Delta t\sigma^2 + A_{\rm RN}f^{-\gamma_{\rm RN}}
     \]
-    where $\sigma$ is the time of arrival uncertainty, and $A_{\rm RN}$ models red noise.
+    where 
+    \begin{itemize}
+        \item $\sigma$ is the time of arrival uncertainty
+        \item $\Delta t$ is the observational cadence
+        \item $A_{\rm RN}$ is the red-noise amplitude
+        \item and $\gamma_{\rm RN}$ is the red-noise spectral index
+    \end{itemize}
 \end{frame}
 
 \section{Conclusion}
@@ -133,7 +170,17 @@
     Accurate PTA sensitivity is expensive to compute.
 
     But with a few oversimplifications, we can get a quick estimate to characterize our detector.
+\end{frame}
 
+\begin{frame}{Sensitivity Curves}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{figs/my_gwplotter.png}
+        \caption{My update to GW Plotter !!
+        \centering \url{https://jeremy-baier/github.io/gwplotter}
+        }
+        \label{fig:sensitivity_curve}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{References}
